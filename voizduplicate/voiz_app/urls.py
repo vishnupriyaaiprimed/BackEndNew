@@ -33,8 +33,6 @@ urlpatterns = [
     path('createaccount', views.createaccount, name="createaccount"),
     path('newconnection', views.newconnection, name="newconnection"),
     path('pay', views.pay, name="pay"),
-    path('prepaid', views.prepaid, name="prepaid"),
-    path('postpaid', views.postpaid, name="postpaid"),
 
 
 

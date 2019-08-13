@@ -96,19 +96,16 @@ class CustomerViewSetByNum(viewsets.ModelViewSet):
 class PostpaidPlanViewSetByNum(viewsets.ModelViewSet):
     serializer_class = PostpaidPlanSerializer
     queryset = PostpaidPlan.objects.all()
-    lookup_field = 'array_data'
 
 
 class PrepaidPlanViewSetByNum(viewsets.ModelViewSet):
     serializer_class = PrepaidPlanSerializer
     queryset = PrepaidPlan.objects.all()
-    lookup_field = 'array_data'
 
 
 class DongleViewSetByNum(viewsets.ModelViewSet):
     serializer_class = DongleSerializer
     queryset = Dongle5.objects.all()
-    lookup_field = 'array_data'
 
     
 

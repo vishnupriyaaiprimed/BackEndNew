@@ -1,0 +1,92 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<link href="{% static 'styles/login.css' %}" rel="stylesheet" />
+{{ name }}
+<div class="wrapper">
+  <div id="formContent">
+    <div class="">
+      <h3>Voizfonica</h3>
+    </div>
+
+    <form>
+      <input
+        type="text"
+        placeholder="Phone Number"
+        name="ph"
+        [(ngModel)]="login.ph"
+        phone
+        required
+        #ph1
+      />
+      
+      <input
+        type="password"
+        placeholder="Password"
+        name="pw"
+        [(ngModel)]="login.pw"
+        #pw1
+      />
+
+      <br /><br />
+
+      <a href="prepaid">
+        <input
+          type="button"
+          class="btn"
+          (click)="onSubmit(login)"
+          value="Login (Prepaid)"
+        />
+      </a>
+
+      <a href="postpaid">
+        <input
+          type="button"
+          class="btn"
+          (click)="onSubmit(login)"
+          value="Login (Postpaid)"
+        />
+      </a>
+
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div style="font-size:20pt;padding-bottom:2%">
+                Enter your Phone number : <input type="text" />
+              </div>
+              <br />
+              <a routerLink="/login">
+                <button
+                  type="button"
+                  class="btn"
+                  data-dismiss="modal"
+                  style="color: white"
+                >
+                  OK
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="row" style="font-size:9pt;padding-bottom:4%">
+      <div class="col">
+        <a href="{% url 'createaccount' %}" style="padding: 9%;"
+          >Create Account ?</a
+        >
+      </div>
+      <div class="col">
+        <a
+          href=""
+          style="padding: 9%;"
+          data-toggle="modal"
+          data-target="#myModal"
+          >Forgot Password ?</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

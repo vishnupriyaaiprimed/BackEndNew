@@ -1,0 +1,96 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<link href="{% static 'styles/newconnection.css' %}" rel="stylesheet" />
+<div class="container-fluid jumb">
+  <h1 class="display-4">Get a new Connection</h1>
+</div>
+<div class="container">
+    <form action="pay" method="POST" id="myform">
+      {% csrf_token %}
+  <div class="row">
+    <div class="col-md-6">
+      <input type="text" name="ncname" placeholder="Name" />
+    </div>
+    <div class="col-md-6">
+      <input type="text" name="ncphone_no" placeholder="Phone no" />
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-md-6">
+      <input type="text" name="ncaddress" placeholder="Address" />
+    </div>
+    <div class="col-md-6">
+      <input type="text" name="ncemail" placeholder="E-mail ID" />
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-md-6">
+      <input type="text" name="ncpincode" placeholder="Pincode" />
+    </div>
+    <div class="col-md-6">
+      <div class="input-group mb-3 kyc">
+        <div class="input-group-prepend">
+          <span class="input-group-text">KYC Appointment</span>
+        </div>
+        <input type="date" name="ncdate" style="width:57%" />
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="row text-center">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <a routerLink="/pay"><input type="submit" value="Proceed to Pay"/></a>
+    </div>
+    </form>
+  </div>
+
+  <!-- <table class="table table-borderless">
+          <tr>
+              <th>Name</th>
+              <th>:</th>
+              <td><input type="text" name="" /></td>
+  
+              <th>Phone no</th>
+              <th>:</th>
+              <td><input type="text" name="" /></td>
+          </tr>
+          <tr>
+              <th>Address</th>
+              <th>:</th>
+              <td><textarea style="width: 180px;"></textarea></td>
+              <th>Email Id</th>
+              <th>:</th>
+              <td><input type="text" name="" /></td>
+              <td></td>
+              <td></td>
+          </tr>
+  
+          <tr>
+              <th>Pincode</th>
+              <th>:</th>
+              <td><input type="text" name="" /></td>
+              <th>Appoinment for KYC</th>
+              <th>:</th>
+              <td>
+                  <input type="date" name="" />
+              </td>
+              <td></td>
+          </tr>
+  
+          <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td style="align-content: center ;padding:20px">
+                  <a routerLink="/pay"><button class="btn btn-secondary">Proceed to Pay</button></a
+          >
+        </td>
+      </tr>
+    </table> -->
+</div>
+
+{% endblock %}

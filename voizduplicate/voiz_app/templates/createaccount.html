@@ -1,0 +1,59 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<script>
+  function fn() {
+    document.getElementById("myform").submit();
+  }
+</script>
+<link href="{% static 'styles/createaccount.css' %}" rel="stylesheet" />
+<div style="height:95%">
+  <div class="wrapper">
+    <div id="formContent">
+      <div class="">
+        <h3>New Account</h3>
+      </div>
+
+      <form action="login" method="POST" id="myform">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Name" />
+        <input type="text" name="phone_num" placeholder="Phone no" />
+        <input type="password" name="pw" placeholder="Password" />
+        <input
+          type="password"
+          name="retype_pw"
+          placeholder="Re-type Password"
+        />
+        <input
+          type="button"
+          class="btn"
+          value="Get OTP"
+          data-toggle="modal"
+          data-target="#myModal"
+        />
+      </form>
+
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div style="font-size:20pt;padding-bottom:2%">
+                <input type="text" name="" placeholder="Enter otp" />
+              </div>
+              <br />
+              <button
+                type="submit"
+                class="btn"
+                data-dismiss="modal"
+                style="color: white;"
+                onclick="fn()"
+              >
+                Register
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

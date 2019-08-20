@@ -1,5 +1,5 @@
 from django.urls import path
-from .import views
+from . import views
 from django.conf.urls import url, include
 from rest_framework import routers
 from rest_framework.authtoken.views import ObtainAuthToken
@@ -33,9 +33,8 @@ urlpatterns = [
     path('createaccount', views.createaccount, name="createaccount"),
     path('newconnection', views.newconnection, name="newconnection"),
     path('pay', views.pay, name="pay"),
-
-
-
+    path('sendmail/',views.send_the_mail, name="sendmail/"),
+    path('sendpassword/',views.send_the_password, name="sendpassword/"),
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^auth/',ObtainAuthToken.as_view())

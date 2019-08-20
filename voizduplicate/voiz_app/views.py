@@ -1,10 +1,15 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
+from django.conf import settings
 from .models import Customer5, PrepaidPlan,PostpaidPlan,Dongle5,Credit, BankAxis, BankSBI, Complaint, Faq
 from rest_framework import viewsets
 from .serializers import UserSerializer, CustomerSerializer, PrepaidPlanSerializer,PostpaidPlanSerializer,DongleSerializer,CreditSerializer, BankAxisSerializer, BankSBISerializer, ComplaintSerializer, FaqSerializer
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
+from django.core.mail import send_mail
+import json
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -146,3 +151,43 @@ class ComplaintViewSet(viewsets.ModelViewSet):
 class FaqViewSet(viewsets.ModelViewSet):
     queryset=Faq.objects.all()
     serializer_class=FaqSerializer
+
+
+@method_decorator(csrf_exempt)
+def send_the_mail(request):
+    print("mail sent successfully")
+    # emailvalue = json.loads(request.body)
+    # print(emailvalue["email"])
+    # sub = "Voizfonica connection"
+    # msg = "Thank you \n We have got your response. Will make the connection soon "
+    # from_mail = settings.EMAIL_HOST_USER
+    # to = [settings.EMAIL_HOST_USER]
+    # send_mail(sub,msg,from_mail,to,fail_silently=True)
+    # print("mail sent")
+
+    if request.method =="POST":
+        print("mail sent inside")
+        emailvalue = json.loads(request.body)
+        print(emailvalue["email"])
+        sub = "Voizfonica connection"
+        msg = "Dear Customer, \n    Thank you for registering with us, we will verify your ID proof and will make the connection soon. "
+        from_mail = settings.EMAIL_HOST_USER
+        to = [emailvalue['email']]
+        send_mail(sub,msg,from_mail,to,fail_silently=True)
+        print("mail sent")
+
+
+@method_decorator(csrf_exempt)
+def send_the_password(request):
+    print("mail sent successfully")
+    if request.method =="POST":
+        print("mail sent inside")
+        emailvalue = json.loads(request.body)
+        print(emailvalue["email"])
+        print(emailvalue["password"])
+        sub = "VoizFonica password"
+        msg = "Dear Customer, \n    Your VoizFonica password is : "+emailvalue["password"]
+        from_mail = settings.EMAIL_HOST_USER
+        to = [emailvalue['email']]
+        send_mail(sub,msg,from_mail,to,fail_silently=True)
+        print("mail sent")

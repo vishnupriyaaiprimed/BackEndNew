@@ -19,10 +19,10 @@ class Customer5(models.Model):
 
     balance = models.CharField(max_length=50)
     expiriesIn = models.CharField(max_length=100)
-    callUsage = models.CharField(max_length=500)#(9092564782,10/08/19,10min);(9898989898,11/08/19,12min)
-    dataUsage = models.CharField(max_length=500)#(10/08/19,10Mb);(11/08/19,11Mb)
-    smsUsage = models.CharField(max_length=500)#(9092564782,10/08/19,10);(9092464782,11/08/19,15)
-    bill = models.CharField(max_length=2000)#(9873547692,74968736,20-06-2019,15-07-2019 to 20-07-2019,30-07-2019,Rs.300,0);(9873547692,74968736,20-05-2019,15-07-2019 to 20-07-2019,30-07-2019,Rs.200,1)
+    callUsage = models.CharField(max_length=500)
+    dataUsage = models.CharField(max_length=500)
+    smsUsage = models.CharField(max_length=500)
+    bill = models.CharField(max_length=2000)
 
     def __str__(self):
         return self.phone_num
